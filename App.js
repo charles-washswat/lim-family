@@ -35,6 +35,7 @@ const Section = ({children, title}): Node => {
 
   console.log('ㅎㅎ');
   console.log('ㅎㅎ2');
+  console.log('땡큐');
   return (
     <View style={styles.sectionContainer}>
       <Text
