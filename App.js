@@ -32,6 +32,7 @@ const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
 
   console.log('ㅎㅎ');
+  console.log('ㅎㅎ2');
   return (
     <View style={styles.sectionContainer}>
       <Text
