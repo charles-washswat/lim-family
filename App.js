@@ -30,7 +30,7 @@ import {
  * LTI update could not be added via codemod */
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
-
+  // 1234
   console.log('ㅎㅎ');
   return (
     <View style={styles.sectionContainer}>
