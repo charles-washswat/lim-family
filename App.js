@@ -30,7 +30,7 @@ import {useState} from 'react/cjs/react.production.min';
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
 const Section = ({children, title}): Node => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(true);
   const isDarkMode = useColorScheme() === 'dark';
 
   console.log('ㅎㅎ');
