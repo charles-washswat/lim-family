@@ -1,0 +1,8 @@
+import React, {useEffect, useState} from 'react';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import styled from 'styled-components/native';
+import FastImage from 'react-native-fast-image';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import storageData from '../static/storage.json';
+
+function ClothItem

@@ -1,11 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import styled from 'styled-components/native';
 import FastImage from 'react-native-fast-image';
-import storageData from './src/static/storage.json';
+import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon2 from 'react-native-vector-icons/Octicons';
+import HomeScreen from './src/screens/HomeScreen';
+import StorageBox from './src/screens/StorageBox';
+
+//stack navigation 추가해서 Tab 네비와 합쳐주기
+const Tab = createBottomTabNavigator();
 
 const Button = styled.Button`
   color: palevioletred;
@@ -16,79 +22,66 @@ const Button = styled.Button`
   border-radius: 3px;
 `;
 
-const HomeScreen = ({navigation}) => {
-  const {result_data_type, content} = storageData;
+const urlList = [
+  'https://image.washswat.com/ecommerce/demo/20221007_04_30_16',
+  'https://image.washswat.com/ecommerce/demo/20221007_04_30_48',
+  // ...
+];
+const urlList2 = [
+  'https://image.washswat.com/ecommerce/demo/20221007_04_30_16',
+  'https://image.washswat.com/ecommerce/demo/20221007_04_30_48',
+  // ...
+];
 
-  useEffect(() => {
-    console.log('storageData: ', storageData);
-    console.log('result_data_type: ', result_data_type);
-    console.log('content: ', content);
-    content.map(item => {
-      const {pictureList} = item;
-      pictureList.map(o => console.log('url: ', o.url));
-    });
-  }, [storageData]);
-
-  const ClothImage = ({height, width, uri}) => {
-    return (
-      <FastImage
-        style={{width, height}}
-        source={{
-          uri,
-          headers: {Authorization: 'someAuthToken'},
-          priority: FastImage.priority.normal,
-        }}
-        resizeMode={FastImage.resizeMode.contain}
-      />
-    );
-  };
-
-  const [Checked, setChecked] = useState(false);
-  return (
-    <View style={styles.screen}>
-      <Text>HomeScreen</Text>
-      <BouncyCheckbox
-        style={styles.checkbox}
-        size={25}
-        fillColor="red"
-        unfillColor="#FFFFFF"
-        iconStyle={{borderColor: 'black', borderRadius: 0}}
-        textStyle={{fontFamily: 'JosefinSans-Regular'}}
-        onPress={() => {
-          setChecked(!Checked);
-        }}
-      />
-      {content.map(item => {
-        const {pictureList} = item;
-        return pictureList.map(o => (
-          <ClothImage height={200} width={200} uri={o.url} />
-        ));
-      })}
-      {/* <ClothImage height={100} width={100} uri={} /> */}
-      <Button title="구매하기" onPress={() => navigation.navigate('Details')} />
-    </View>
-  );
-};
+const allList = [];
 
 const DetailsScreen = ({navigation}) => {
   return (
-    <View style={styles.screen}>
+    <View style={styles.container}>
       <Text>Details Screen</Text>
-      <Button title="돌아가기" onPress={() => navigation.goBack()} />
-      <Button title="홈으로 돌아가기" onPress={() => navigation.popToTop()} />
+      <Button
+        title="홈으로 돌아가기"
+        onPress={() => navigation.navigate('Home')}
+      />
     </View>
   );
 };
-
-const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
+      <Tab.Navigator initialRouteName="StorageBox">
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: '홈',
+            tabBarIcon: ({color, size}) => (
+              <Icon2 name="home" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="StorageBox"
+          component={StorageBox}
+          options={{
+            title: '이용내역',
+            tabBarIcon: ({color, size}) => (
+              <Icon1 name="file-document-edit" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={{
+            title: '마이세특',
+            tabBarIcon: ({color, size}) => (
+              <Icon1 name="account" color={color} size={size} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
@@ -101,6 +94,26 @@ const styles = StyleSheet.create({
   },
   checkbox: {
     margin: 10,
+  },
+  buybutton: {
+    backgroundColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 50,
+    height: 50,
+    marginBottom: 30,
+    borderRadius: 35,
+  },
+  scrollView: {
+    backgroundColor: '#F2F2F2',
+  },
+  stylegridView: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 16,
+    paddingTop: 10,
+    justifyContent: 'space-between',
+    paddingBottom: 80,
   },
 });
 
