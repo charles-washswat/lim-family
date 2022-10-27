@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import React from 'react';
 import styled from 'styled-components/native';
 import FastImage from 'react-native-fast-image';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import storageData from '../static/storage.json';
 
-function ClothItem({url, tagLabel}) {
+//item의 key 들을 return 해서 보여주기
+
+function ClothItem({url, tagLabel, name, initializedAt}) {
   return (
     <Container>
       <ClothImage height={'100%'} width={'100%'} uri={url} />
-      <CheckBox fillColor="black" />
+      <CheckBox fillColor="black" disableText />
     </Container>
   );
 }

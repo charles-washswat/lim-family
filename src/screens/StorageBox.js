@@ -11,12 +11,8 @@ import storageData from '../static/storage.json';
 import ClothItem from '../components/ClothItem';
 
 const StorageBox = ({navigation}) => {
-  const {result_data_type, content} = storageData;
-
+  const {content} = storageData;
   useEffect(() => {
-    console.log('storageData: ', storageData);
-    console.log('result_data_type: ', result_data_type);
-    console.log('content: ', content);
     content.map(item => {
       const {pictureList} = item;
       pictureList.map(o => console.log('url: ', o.url));
@@ -35,13 +31,16 @@ const StorageBox = ({navigation}) => {
       <ScrollView horizontal={false} style={styles.scrollView}>
         <View style={styles.stylegridView}>
           {content.map(item => {
-            const {pictureList, storageId, tagLabel} = item;
+            const {pictureList, storageId, tagLabel, name, initializedAt} =
+              item;
             return (
               <ClothItemWrapper>
                 <ClothItem
                   key={storageId}
                   url={pictureList[0].url}
                   tagLabel={tagLabel}
+                  name={name}
+                  initializedAt={initializedAt}
                 />
               </ClothItemWrapper>
             );
