@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import styled from 'styled-components/native';
-import FastImage from 'react-native-fast-image';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import storageData from '../static/storage.json';
 import ClothItem from '../components/ClothItem';
 
@@ -19,48 +23,26 @@ const StorageBox = ({navigation}) => {
     });
   }, [storageData]);
 
-  const ClothImage = ({height, width, uri}) => {
-    return (
-      <FastImage
-        style={{height, width}}
-        justifyContent="center"
-        borderRadius={40}
-        borderColor="red"
-        source={{
-          uri,
-          headers: {Authorization: 'someAuthToken'},
-          priority: FastImage.priority.normal,
-        }}
-        resizeMode={FastImage.resizeMode.contain}
-      />
-    );
-  };
-
-  const [Checked, setChecked] = useState(false);
   return (
     <View style={styles.container}>
-      <Button
-        style={styles.buybutton}
-        title="되찾기"
-        onPress={() => navigation.navigate('Details')}
-      />
-      <BouncyCheckbox
-        style={styles.checkbox}
-        size={25}
-        fillColor="black"
-        unfillColor="#FFFFFF"
-        iconStyle={{borderColor: 'black'}}
-        onPress={() => {
-          setChecked(!Checked);
-        }}
-      />
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('DetailScreen', {msg: 'From StorageBox'})
+        }
+        style={styles.button}>
+        <Text style={styles.buttonText}>되찾기</Text>
+      </TouchableOpacity>
       <ScrollView horizontal={false} style={styles.scrollView}>
         <View style={styles.stylegridView}>
           {content.map(item => {
-            const {pictureList, storageId} = item;
+            const {pictureList, storageId, tagLabel} = item;
             return (
               <ClothItemWrapper>
-                <ClothItem key={storageId} url={pictureList[0].url} />
+                <ClothItem
+                  key={storageId}
+                  url={pictureList[0].url}
+                  tagLabel={tagLabel}
+                />
               </ClothItemWrapper>
             );
           })}
@@ -92,14 +74,18 @@ const styles = StyleSheet.create({
   checkbox: {
     margin: 10,
   },
-  buybutton: {
-    backgroundColor: 'green',
+  button: {
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 50,
+    width: 100,
     height: 50,
     marginBottom: 30,
-    borderRadius: 35,
+    borderRadius: 15,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
   },
   scrollView: {
     width: '100%',
@@ -110,7 +96,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     paddingHorizontal: 16,
-    // paddingTop: 10,
     justifyContent: 'space-around',
   },
 });
