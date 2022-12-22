@@ -37,7 +37,7 @@ const Gallery = ({navigation}) => {
   // };
 
   useEffect(() => {
-    // haha
+    // test
     // console.log('temp: ', temp.picture.assets[0].uri);
     // console.log('temp2: ', temp2?.picture?.assets[0]?.uri || 'hi');
     // console.log('temp3: ', temp3.picture.assets[0].uri);
