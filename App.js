@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/Octicons';
 import HomeScreen from './src/screens/HomeScreen';
-import {StackStorageBox} from './src/components/CustomNavigation';
+import {StackStorageBox, StackGallery} from './src/components/CustomNavigation';
 import ProfileScreen from './src/screens/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
@@ -23,7 +23,13 @@ const Button = styled.Button`
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Home">
+      <Tab.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarActiveTintColor: '6200ee',
+        }}>
         <Tab.Screen
           name="Home"
           component={HomeScreen}
@@ -41,6 +47,16 @@ const App = () => {
             title: '이용내역',
             tabBarIcon: ({color, size}) => (
               <Icon1 name="file-document-edit" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="사진첩"
+          component={StackGallery}
+          options={{
+            title: '사진첩',
+            tabBarIcon: ({color, size}) => (
+              <Icon1 name="view-gallery-outline" color={color} size={size} />
             ),
           }}
         />

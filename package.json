@@ -1,5 +1,5 @@
 {
-  "name": "limfamilyproject",
+  "name": "privategalleryLimFamily",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-firebase/app": "^16.4.6",
+    "@react-native-firebase/auth": "^16.4.6",
+    "@react-native-firebase/firestore": "^16.4.6",
+    "@react-native-firebase/storage": "^16.4.6",
     "@react-navigation/bottom-tabs": "^6.4.0",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/stack": "^6.3.2",
@@ -19,6 +23,9 @@
     "react-native-bouncy-checkbox": "^3.0.5",
     "react-native-fast-image": "^8.6.1",
     "react-native-gesture-handler": "^2.7.1",
+    "react-native-image-picker": "^4.10.2",
+    "react-native-input-validator": "^1.0.12",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-reanimated": "^2.11.0",
     "react-native-safe-area-context": "^4.4.1",
     "react-native-screens": "^3.18.2",
