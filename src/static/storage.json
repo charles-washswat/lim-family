@@ -1,0 +1,534 @@
+{
+  "result_data_type": "list",
+  "content": [
+    {
+      "contentId": "634771272b9fb60012bb8a8b",
+      "orderId": "B0B429HB10071057",
+      "storageId": "22100717573",
+      "name": "자켓, 점퍼",
+      "alias": "자켓",
+      "itemId": 6,
+      "barcode_1": "80-2-968",
+      "barcode_2": "080229681",
+      "step": "storaged",
+      "brand": "VANNWORKS",
+      "color": "#783f04",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "판매용",
+      "initializedAt": "2022-10-07T06:48:11.048Z",
+      "activatedAt": "2022-10-13T02:00:07.584Z",
+      "pictureList": [
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_30_16",
+          "title": "전면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T07:30:22.948Z",
+          "pictureId": "633fd58ecc8cb400128b2d64"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_30_48",
+          "title": "후면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T07:30:51.889Z",
+          "pictureId": "633fd5ab7c86660013376e1f"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_55_02",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T07:55:07.296Z",
+          "pictureId": "633fdb5b7c86660013376f20"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_55_37",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T07:55:41.018Z",
+          "pictureId": "633fdb7d7c86660013376f2b"
+        }
+      ],
+      "savedAt": "2022-10-06T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "63425572bcae570013937415",
+      "orderId": "B0B429HB10071057",
+      "storageId": "22100717545",
+      "name": "일반셔츠, 블라우스",
+      "alias": "일반셔츠",
+      "itemId": 4,
+      "barcode_1": "80-2-966",
+      "barcode_2": "080229667",
+      "step": "storaged",
+      "brand": "미상",
+      "color": "#50613f",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "판매용",
+      "initializedAt": "2022-10-07T06:48:11.035Z",
+      "activatedAt": "2022-10-09T05:00:34.302Z",
+      "pictureList": [
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_03_57_42",
+          "title": "전면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T06:57:46.150Z",
+          "pictureId": "633fcdea93239f00126e0ece"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_03_58_42",
+          "title": "후면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T06:58:44.411Z",
+          "pictureId": "633fce24cc8cb400128b2a43"
+        }
+      ],
+      "savedAt": "2022-10-06T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "634255700293470013fff880",
+      "orderId": "B0B429HB10071057",
+      "storageId": "22100717575",
+      "name": "바지",
+      "alias": "바지",
+      "itemId": 5,
+      "barcode_1": "80-2-967",
+      "barcode_2": "080229674",
+      "step": "storaged",
+      "brand": "미상",
+      "color": "#000000",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "판매용",
+      "initializedAt": "2022-10-07T06:48:11.042Z",
+      "activatedAt": "2022-10-09T05:00:32.224Z",
+      "pictureList": [
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_14_53",
+          "title": "전면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T07:14:58.076Z",
+          "pictureId": "633fd1f2df72ef0013fa677c"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_15_14",
+          "title": "후면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T07:15:17.624Z",
+          "pictureId": "633fd205cc8cb400128b2c33"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_19_11",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T07:19:22.641Z",
+          "pictureId": "633fd2facc8cb400128b2c7c"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_20_05",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T07:20:10.658Z",
+          "pictureId": "633fd32adf72ef0013fa67c8"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_16_46",
+          "title": "데미지사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T07:16:51.362Z",
+          "pictureId": "633fd2633561d10013966571"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_22_23",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T07:22:46.448Z",
+          "pictureId": "633fd3c63561d100139665d1"
+        }
+      ],
+      "savedAt": "2022-10-06T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "6342556e0293470013fff87e",
+      "orderId": "B0B429HB10071057",
+      "storageId": "22100717541",
+      "name": "티셔츠, 맨투맨",
+      "alias": "티셔츠",
+      "itemId": 3,
+      "barcode_1": "80-2-965",
+      "barcode_2": "080229650",
+      "step": "storaged",
+      "brand": "adidas",
+      "color": "#000080",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "판매용",
+      "initializedAt": "2022-10-07T06:42:19.354Z",
+      "activatedAt": "2022-10-09T05:00:30.468Z",
+      "pictureList": [
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_58_50",
+          "title": "전면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T07:58:52.082Z",
+          "pictureId": "633fdc3c3561d10013966770"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_51_20",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T07:51:24.980Z",
+          "pictureId": "633fda7cc2c2f00013bdf66f"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_47_32",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T07:47:38.634Z",
+          "pictureId": "633fd99acc8cb400128b2e1a"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_48_39",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T07:48:45.000Z",
+          "pictureId": "633fd9dd3561d1001396671c"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_04_59_13",
+          "title": "후면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T07:59:15.034Z",
+          "pictureId": "633fdc537c86660013376f53"
+        }
+      ],
+      "savedAt": "2022-10-06T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "633fc9e4c2c2f00013bdf160",
+      "orderId": "B0B429HB10071057",
+      "storageId": "22100714920",
+      "name": "자켓, 점퍼",
+      "alias": "점퍼",
+      "itemId": 2,
+      "barcode_1": "80-2-964",
+      "barcode_2": "080229643",
+      "step": "storaged",
+      "brand": "미상",
+      "color": "#000080",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "판매용",
+      "initializedAt": "2022-10-07T05:20:03.211Z",
+      "activatedAt": "2022-10-07T06:40:36.861Z",
+      "pictureList": [
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_02_26_47",
+          "title": "전면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T05:26:50.652Z",
+          "pictureId": "633fb89a7c86660013376566"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_02_32_16",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T05:32:25.641Z",
+          "pictureId": "633fb9e9df72ef0013fa60b4"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_02_33_47",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T05:33:55.754Z",
+          "pictureId": "633fba4393239f00126e099c"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_02_36_29",
+          "title": "데미지사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T05:36:40.935Z",
+          "pictureId": "633fbae8cc8cb400128b2553"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_02_30_48",
+          "title": "후면사진",
+          "createdBy": "amy@washswat.com",
+          "createdAt": "2022-10-07T05:30:51.686Z",
+          "pictureId": "633fb98bcc8cb400128b2501"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_02_37_25",
+          "title": "데미지사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T05:37:32.303Z",
+          "pictureId": "633fbb1cdf72ef0013fa60f0"
+        },
+        {
+          "url": "https://image.washswat.com/ecommerce/demo/20221007_02_34_42",
+          "title": "기타사진",
+          "createdBy": "Monkey@washswat.com",
+          "createdAt": "2022-10-07T05:34:47.768Z",
+          "pictureId": "633fba7793239f00126e09ad"
+        }
+      ],
+      "savedAt": "2022-10-06T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "62eb4de1c0c85b00139340e8",
+      "orderId": "B0B429EB08011215",
+      "storageId": "22080315352",
+      "name": "다운패딩",
+      "alias": "다운패딩",
+      "itemId": 7,
+      "barcode_1": "58-5-013",
+      "barcode_2": "058150135",
+      "step": "storaged",
+      "brand": "JEEP",
+      "color": "#000000",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "보관",
+      "initializedAt": "2022-08-03T05:35:03.647Z",
+      "activatedAt": "2022-08-04T04:41:05.718Z",
+      "pictureList": [
+        {
+          "url": "https://tagging.washswat.com/1HKjGrJYhj_w300_h300.png",
+          "title": "전면사진",
+          "createdBy": "mint@washswat.com",
+          "createdAt": "2022-08-03T07:33:42.084Z",
+          "pictureId": "62ea24d6d2e1f10014371959"
+        }
+      ],
+      "savedAt": "2022-08-02T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "62eb4dcabbac500014ebd098",
+      "orderId": "B0B429EB08011215",
+      "storageId": "22080315413",
+      "name": "다운패딩",
+      "alias": "다운패딩",
+      "itemId": 6,
+      "barcode_1": "58-5-012",
+      "barcode_2": "058150128",
+      "step": "storaged",
+      "brand": "Beanpole",
+      "color": "#1155cc",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "보관",
+      "initializedAt": "2022-08-03T05:35:03.640Z",
+      "activatedAt": "2022-08-04T04:40:42.350Z",
+      "pictureList": [
+        {
+          "url": "https://tagging.washswat.com/W2QNzzRa8L_w300_h300.png",
+          "title": "전면사진",
+          "createdBy": "mint@washswat.com",
+          "createdAt": "2022-08-03T07:30:58.063Z",
+          "pictureId": "62ea24328146110016bb37e1"
+        }
+      ],
+      "savedAt": "2022-08-02T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "62eb4dc4f7575e0013ecdbb6",
+      "orderId": "B0B429EB08011215",
+      "storageId": "22080315441",
+      "name": "자켓, 점퍼",
+      "alias": "점퍼",
+      "itemId": 5,
+      "barcode_1": "58-5-011",
+      "barcode_2": "058150111",
+      "step": "storaged",
+      "brand": "미상",
+      "color": "#000000",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "보관",
+      "initializedAt": "2022-08-03T05:35:03.619Z",
+      "activatedAt": "2022-08-04T04:40:36.966Z",
+      "pictureList": [
+        {
+          "url": "https://tagging.washswat.com/O2JgxFFsOR_w300_h300.png",
+          "title": "전면사진",
+          "createdBy": "mint@washswat.com",
+          "createdAt": "2022-08-03T07:29:57.353Z",
+          "pictureId": "62ea23f58146110016bb37d5"
+        }
+      ],
+      "savedAt": "2022-08-02T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "62eb4dc2fbf1a2001538d058",
+      "orderId": "B0B429EB08011215",
+      "storageId": "22080315467",
+      "name": "코트, 트렌치코트",
+      "alias": "코트",
+      "itemId": 3,
+      "barcode_1": "58-5-009",
+      "barcode_2": "058150098",
+      "step": "storaged",
+      "brand": "미상",
+      "color": "#000000",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "보관",
+      "initializedAt": "2022-08-03T05:35:03.601Z",
+      "activatedAt": "2022-08-04T04:40:34.716Z",
+      "pictureList": [
+        {
+          "url": "https://tagging.washswat.com/rJrNy0Q3SD_w300_h300.png",
+          "title": "전면사진",
+          "createdBy": "mint@washswat.com",
+          "createdAt": "2022-08-03T07:35:17.540Z",
+          "pictureId": "62ea25354d8d38001410293e"
+        }
+      ],
+      "savedAt": "2022-08-02T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "62eb4dc0765d6f0013df115d",
+      "orderId": "B0B429EB08011215",
+      "storageId": "22080315496",
+      "name": "자켓, 점퍼",
+      "alias": "점퍼",
+      "itemId": 4,
+      "barcode_1": "58-5-010",
+      "barcode_2": "058150104",
+      "step": "storaged",
+      "brand": "CLRIDEN",
+      "color": "#50613f",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "보관",
+      "initializedAt": "2022-08-03T05:35:03.607Z",
+      "activatedAt": "2022-08-04T04:40:32.019Z",
+      "pictureList": [
+        {
+          "url": "https://tagging.washswat.com/NhS6Mvrxgi_w300_h300.png",
+          "title": "전면사진",
+          "createdBy": "mint@washswat.com",
+          "createdAt": "2022-08-03T07:34:11.364Z",
+          "pictureId": "62ea24f38146110016bb37f2"
+        }
+      ],
+      "savedAt": "2022-08-02T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "62eb4dbdfbf1a2001538d055",
+      "orderId": "B0B429EB08011215",
+      "storageId": "22080315385",
+      "name": "다운패딩",
+      "alias": "다운패딩",
+      "itemId": 8,
+      "barcode_1": "58-5-014",
+      "barcode_2": "058150142",
+      "step": "storaged",
+      "brand": "Penfield",
+      "color": "#000000",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "보관",
+      "initializedAt": "2022-08-03T05:35:03.652Z",
+      "activatedAt": "2022-08-04T04:40:29.266Z",
+      "pictureList": [
+        {
+          "url": "https://tagging.washswat.com/9vlCQeuTxW_w300_h300.png",
+          "title": "전면사진",
+          "createdBy": "mint@washswat.com",
+          "createdAt": "2022-08-03T07:32:01.384Z",
+          "pictureId": "62ea2471f3142f0015c755a0"
+        }
+      ],
+      "savedAt": "2022-08-02T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    },
+    {
+      "contentId": "62eb4db9bbac500014ebd085",
+      "orderId": "B0B429EB08011215",
+      "storageId": "22080315522",
+      "name": "다운패딩",
+      "alias": "다운패딩",
+      "itemId": 2,
+      "barcode_1": "58-5-008",
+      "barcode_2": "058150081",
+      "step": "storaged",
+      "brand": "BLACKYAK",
+      "color": "#000080",
+      "isAvailableForStorage": true,
+      "identity": "dry",
+      "tagLabel": "보관",
+      "initializedAt": "2022-08-03T05:35:03.577Z",
+      "activatedAt": "2022-08-04T04:40:25.972Z",
+      "pictureList": [
+        {
+          "url": "https://tagging.washswat.com/l33TsVFEyD_w300_h300.png",
+          "title": "전면사진",
+          "createdBy": "mint@washswat.com",
+          "createdAt": "2022-08-03T07:34:41.599Z",
+          "pictureId": "62ea2511e958c800133e0a55"
+        }
+      ],
+      "savedAt": "2022-08-02T15:00:00.000Z",
+      "payment": {
+        "nextPayDate": "2022-11-03",
+        "policyForMonthlyCharge": 3000,
+        "currentStoragePrice": 0
+      }
+    }
+  ]
+}

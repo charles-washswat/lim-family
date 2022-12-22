@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "LimfamilyProject.app"
-               BlueprintName = "LimfamilyProject"
-               ReferencedContainer = "container:LimfamilyProject.xcodeproj">
+               BuildableName = "LimFamil.app"
+               BlueprintName = "LimFamil"
+               ReferencedContainer = "container:LimFamil.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "LimfamilyProjectTests.xctest"
-               BlueprintName = "LimfamilyProjectTests"
-               ReferencedContainer = "container:LimfamilyProject.xcodeproj">
+               BuildableName = "LimFamilTests.xctest"
+               BlueprintName = "LimFamilTests"
+               ReferencedContainer = "container:LimFamil.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "LimfamilyProject.app"
-            BlueprintName = "LimfamilyProject"
-            ReferencedContainer = "container:LimfamilyProject.xcodeproj">
+            BuildableName = "LimFamil.app"
+            BlueprintName = "LimFamil"
+            ReferencedContainer = "container:LimFamil.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "LimfamilyProject.app"
-            BlueprintName = "LimfamilyProject"
-            ReferencedContainer = "container:LimfamilyProject.xcodeproj">
+            BuildableName = "LimFamil.app"
+            BlueprintName = "LimFamil"
+            ReferencedContainer = "container:LimFamil.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
