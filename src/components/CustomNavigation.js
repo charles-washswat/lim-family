@@ -19,7 +19,7 @@ const StackStorageBox = () => {
 
 const StackGallery = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Gallery" component={Gallery} />
       <Stack.Screen name="WritePhotoMode" component={WritePhotoMode} />
       <Stack.Screen name="DetailGallery" component={DetailGallery} />

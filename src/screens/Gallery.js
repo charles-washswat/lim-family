@@ -5,12 +5,17 @@ import {
   StyleSheet,
   Platform,
   KeyboardAvoidingView,
+  Text,
+  TouchableOpacity,
+  Alert,
+  RefreshControl,
 } from 'react-native';
 import {useSafeAreaFrame} from 'react-native-safe-area-context';
 import CameraButton from '../components/CameraButton';
 import styled from 'styled-components/native';
 import PhotoList from '../components/PhotoList';
 import WritePhotoMode from '../screens/WritePhotoMode';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const TABBAR_HEIGHT = 70;
 
@@ -36,23 +41,54 @@ const Gallery = ({navigation}) => {
   //   picture: {},
   // };
 
-  useEffect(() => {
-    // test
-    // console.log('temp: ', temp.picture.assets[0].uri);
-    // console.log('temp2: ', temp2?.picture?.assets[0]?.uri || 'hi');
-    // console.log('temp3: ', temp3.picture.assets[0].uri);
-  }, []);
+  // useEffect(() => {
+  //   // test
+  //   // console.log('temp: ', temp.picture.assets[0].uri);
+  //   // console.log('temp2: ', temp2?.picture?.assets[0]?.uri || 'hi');
+  //   // console.log('temp3: ', temp3.picture.assets[0].uri);
+  // }, []);
 
-  const onCreate = ({title, content, picture}) => {
+  const onCreate = ({title, content, picture, isChecked}) => {
     const writePhotoList = {
       id: nextId.current,
       image: picture?.assets[0]?.uri,
       title,
       content,
+      isChecked,
     };
-    console.log('writePhotoList: ', writePhotoList);
     setPhotoList([...photoList, writePhotoList]);
     nextId.current += 1;
+  };
+
+  const onRemove = id => {
+    Alert.alert(
+      '삭제',
+      '정말로 삭제하시겠습니까?',
+      [
+        {text: '취소', onPress: () => {}, style: 'cancel'},
+        {
+          text: '삭제',
+          onPress: () => {
+            setPhotoList(photoList.filter(item => item.isChecked === false));
+          },
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => {},
+      },
+    );
+  };
+
+  const onpressAction = ({id, isChecked}) => {
+    const newPhotoList = photoList.map(item => {
+      if (item.id === id) {
+        return {...item, isChecked: !isChecked};
+      } else {
+        return item;
+      }
+    });
+    setPhotoList(newPhotoList);
   };
 
   useEffect(() => {
@@ -61,13 +97,25 @@ const Gallery = ({navigation}) => {
 
   return (
     <KeyboardAvoidingView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Gallery</Text>
+        <TouchableOpacity onPress={onRemove}>
+          <Icon name="trash-can-outline" size={35} color="black" />
+        </TouchableOpacity>
+      </View>
       <ScrollView horizontal={false} style={styles.scrollView}>
         <View style={styles.stylegridView}>
           {photoList.map(item => {
-            const {id, image, title} = item;
+            const {id, image, title, isChecked} = item;
             return (
               <PhotoListWrapper key={id}>
-                <PhotoList image={image} title={title} />
+                <PhotoList
+                  id={id}
+                  image={image}
+                  title={title}
+                  isChecked={isChecked}
+                  onPress={onpressAction}
+                />
               </PhotoListWrapper>
             );
           })}
@@ -108,6 +156,23 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  header: {
+    height: '8.8%',
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingRight: 20,
+    paddingLeft: 20,
+    justifyContent: 'space-between',
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'black',
   },
   scrollView: {
     width: '100%',

@@ -285,6 +285,7 @@ const StorageBox = ({navigation}) => {
                   name={name}
                   initializedAt={initializedAt}
                   isChecked={isChecked}
+                  onPress={onpressAction}
                 />
               </ClothItemWrapper>
             );

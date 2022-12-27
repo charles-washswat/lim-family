@@ -1,4 +1,5 @@
-import React, {useState, Text} from 'react';
+import React, {useState} from 'react';
+import {Text} from 'react-native';
 import styled from 'styled-components/native';
 import FastImage from 'react-native-fast-image';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -6,17 +7,17 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 //item의 key 들을 return 해서 보여주기
 // instance === 붕어빵, 선언(클래스, 함수)
 
-function ClothItem({url, isChecked, name, storageID, onpressAction, onChange}) {
+function ClothItem({url, isChecked, name, storageID, onPress, onChange}) {
   return (
     <Container>
       <ClothImage height={'100%'} width={'100%'} uri={url} />
       <CheckBox
         isChecked={isChecked}
-        onPress={() => onpressAction({storageID, isChecked})}
+        onPress={onPress}
         fillColor="black"
         disableText
       />
-      {/* <Text>{name}</Text> */}
+      <Text>{name}</Text>
     </Container>
   );
 }
