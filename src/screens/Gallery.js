@@ -60,8 +60,11 @@ const Gallery = ({navigation}) => {
     nextId.current += 1;
   };
 
-  const onRemove = id => {
-    Alert.alert(
+  const onRemove = () => {
+    if (photoList.every(item => item.isChecked === false)) {
+      return Alert.alert('삭제할 항목을 선택해주세요');
+    }
+    return Alert.alert(
       '삭제',
       '정말로 삭제하시겠습니까?',
       [

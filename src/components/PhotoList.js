@@ -1,14 +1,18 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 import FastImage from 'react-native-fast-image';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import WritePhotoMode from '../screens/WritePhotoMode';
+import {concat} from 'react-native-reanimated';
 
 function PhotoList({id, image, title, isChecked, onPress}) {
   return (
     <View>
       <Container>
-        <Photo height={'100%'} width={'100%'} image={image} />
+        <TouchableOpacity>
+          <Photo height={'100%'} width={'100%'} image={image} />
+        </TouchableOpacity>
         <CheckBox
           isChecked={isChecked}
           onPress={() => onPress({id, isChecked})}
