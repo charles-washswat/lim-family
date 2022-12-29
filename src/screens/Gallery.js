@@ -16,12 +16,36 @@ import styled from 'styled-components/native';
 import PhotoList from '../components/PhotoList';
 import WritePhotoMode from '../screens/WritePhotoMode';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {loadOptions} from '@babel/core';
 
 const TABBAR_HEIGHT = 70;
 
 const Gallery = ({navigation}) => {
   const insets = useSafeAreaFrame();
   const [photoList, setPhotoList] = useState([]);
+  useEffect(() => {
+    async function save() {
+      try {
+        await AsyncStorage.setItem('photoList', JSON.stringify(photoList));
+      } catch (e) {
+        Alert.alert('저장에 실패하였습니다');
+      }
+    }
+    save();
+  }, [photoList]);
+  useEffect(() => {
+    async function load() {
+      try {
+        const rawPhotoList = await AsyncStorage.getItem('photoList');
+        const savedPhotoList = JSON.parse(rawPhotoList);
+        setPhotoList(savedPhotoList);
+      } catch (e) {
+        Alert.alert('불러오기에 실패하였습니다');
+      }
+    }
+    load();
+  }, []);
   const [modalVisible, setModalVisible] = useState(false);
   const nextId = useRef(1);
 
@@ -58,6 +82,18 @@ const Gallery = ({navigation}) => {
     };
     setPhotoList([...photoList, writePhotoList]);
     nextId.current += 1;
+  };
+
+  const onModify = ({id, title, content, picture, isChecked}) => {
+    const modifyList = {
+      id,
+      image: picture,
+      title,
+      content,
+      isChecked,
+    };
+    const deletePhotoList = photoList.filter(item => item.id !== id);
+    setPhotoList([deletePhotoList, modifyList]);
   };
 
   const onRemove = () => {
@@ -109,15 +145,17 @@ const Gallery = ({navigation}) => {
       <ScrollView horizontal={false} style={styles.scrollView}>
         <View style={styles.stylegridView}>
           {photoList.map(item => {
-            const {id, image, title, isChecked} = item;
+            const {id, image, title, content, isChecked} = item;
             return (
               <PhotoListWrapper key={id}>
                 <PhotoList
                   id={id}
                   image={image}
                   title={title}
+                  content={content}
                   isChecked={isChecked}
                   onPress={onpressAction}
+                  onModify={onModify}
                 />
               </PhotoListWrapper>
             );

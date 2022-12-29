@@ -3,14 +3,24 @@ import {Text, View, TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 import FastImage from 'react-native-fast-image';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import WritePhotoMode from '../screens/WritePhotoMode';
-import {concat} from 'react-native-reanimated';
+import {useNavigation} from '@react-navigation/native';
 
-function PhotoList({id, image, title, isChecked, onPress}) {
+function PhotoList({id, onModify, image, title, content, isChecked, onPress}) {
+  const navigation = useNavigation();
   return (
     <View>
       <Container>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('DetailGallery', {
+              id: {id},
+              onModify: {onModify},
+              oldImage: {image},
+              oldTitle: {title},
+              oldContent: {content},
+              oldIsChecked: {isChecked},
+            })
+          }>
           <Photo height={'100%'} width={'100%'} image={image} />
         </TouchableOpacity>
         <CheckBox
