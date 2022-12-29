@@ -13,12 +13,12 @@ function PhotoList({id, onModify, image, title, content, isChecked, onPress}) {
         <TouchableOpacity
           onPress={() =>
             navigation.navigate('DetailGallery', {
-              id: {id},
-              onModify: {onModify},
-              oldImage: {image},
-              oldTitle: {title},
-              oldContent: {content},
-              oldIsChecked: {isChecked},
+              id,
+              onModify,
+              oldImage: image,
+              oldTitle: title,
+              oldContent: content,
+              oldIsChecked: isChecked,
             })
           }>
           <Photo height={'100%'} width={'100%'} image={image} />

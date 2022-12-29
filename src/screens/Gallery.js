@@ -8,7 +8,6 @@ import {
   Text,
   TouchableOpacity,
   Alert,
-  RefreshControl,
 } from 'react-native';
 import {useSafeAreaFrame} from 'react-native-safe-area-context';
 import CameraButton from '../components/CameraButton';
@@ -25,21 +24,13 @@ const Gallery = ({navigation}) => {
   const insets = useSafeAreaFrame();
   const [photoList, setPhotoList] = useState([]);
   useEffect(() => {
-    async function save() {
-      try {
-        await AsyncStorage.setItem('photoList', JSON.stringify(photoList));
-      } catch (e) {
-        Alert.alert('저장에 실패하였습니다');
-      }
-    }
-    save();
-  }, [photoList]);
-  useEffect(() => {
     async function load() {
+      console.log('load>>>');
       try {
         const rawPhotoList = await AsyncStorage.getItem('photoList');
         const savedPhotoList = JSON.parse(rawPhotoList);
         setPhotoList(savedPhotoList);
+        console.log('savedPhotoList>>>', savedPhotoList);
       } catch (e) {
         Alert.alert('불러오기에 실패하였습니다');
       }
@@ -72,7 +63,7 @@ const Gallery = ({navigation}) => {
   //   // console.log('temp3: ', temp3.picture.assets[0].uri);
   // }, []);
 
-  const onCreate = ({title, content, picture, isChecked}) => {
+  const onCreate = async ({title, content, picture, isChecked}) => {
     const writePhotoList = {
       id: nextId.current,
       image: picture?.assets[0]?.uri,
@@ -80,20 +71,34 @@ const Gallery = ({navigation}) => {
       content,
       isChecked,
     };
-    setPhotoList([...photoList, writePhotoList]);
+    const combinedPhotoList = [...photoList, writePhotoList];
+    setPhotoList(combinedPhotoList);
     nextId.current += 1;
+    try {
+      await AsyncStorage.setItem(
+        'photoList',
+        JSON.stringify(combinedPhotoList),
+      );
+    } catch (e) {
+      console.log('e');
+      Alert.alert('저장에 실패하였습니다');
+    }
   };
 
   const onModify = ({id, title, content, picture, isChecked}) => {
-    const modifyList = {
+    const modifiedPhotoContents = {
       id,
       image: picture,
       title,
       content,
       isChecked,
     };
-    const deletePhotoList = photoList.filter(item => item.id !== id);
-    setPhotoList([deletePhotoList, modifyList]);
+    console.log('modifiedPhotoContents>>>', modifiedPhotoContents);
+    const deletedPhotoList = photoList.filter(item => item.id !== id);
+    console.log('deletedPhotoList>>>', deletedPhotoList);
+    const test = [...deletedPhotoList, modifiedPhotoContents];
+    setPhotoList(test);
+    console.log('test>>>', test);
   };
 
   const onRemove = () => {

@@ -16,21 +16,18 @@ import {launchImageLibrary} from 'react-native-image-picker';
 import {useNavigation} from '@react-navigation/native';
 
 const DetailGallery = ({route}) => {
+  const {id, onModify, oldImage, oldTitle, oldContent, oldIsChecked} =
+    route.params;
   // id, oldImage, oldTitle, oldContent, oldIsChecked, onClose, onModify
   const navigation = useNavigation();
-  const [title, setTitle] = useState(route.params.oldTitle);
-  // useEffect(() => {
-  //   setTitle(oldTitle);
-  // }, [oldTitle]);
-  const [content, setContent] = useState(route.params.oldContent);
+  const [title, setTitle] = useState(oldTitle);
+  const [content, setContent] = useState(oldContent);
   // useEffect(() => {
   //   setContent(oldContent);
   // }, [oldContent]);
-  const [picture, setPicture] = useState(route.params.oldImage);
-  // useEffect(() => {
-  //   setPicture(oldImage);
-  // }, [oldImage]);
-  const [isChecked, setIsChecked] = useState(route.params.oldIsChecked);
+  const [picture, setPicture] = useState(oldImage);
+
+  const [isChecked, setIsChecked] = useState(oldIsChecked);
   // useEffect(() => {
   //   setIsChecked(oldIsChecked);
   // }, [oldIsChecked]);
@@ -53,10 +50,10 @@ const DetailGallery = ({route}) => {
   };
 
   const onReset = () => {
-    setTitle(route.params.oldTitle);
-    setContent(route.params.oldContent);
-    setPicture(route.params.oldImage);
-    setIsChecked(route.params.oldIsChecked);
+    setTitle(oldTitle);
+    setContent(oldContent);
+    setPicture(oldImage);
+    setIsChecked(oldIsChecked);
   };
 
   const setValidator = () => {
@@ -66,8 +63,15 @@ const DetailGallery = ({route}) => {
     if (title === '') {
       return Alert.alert('제목을 추가해주세요');
     }
-    onModify(route.params.id, title, content, picture, isChecked);
-    () => navigation.navigate('Gallery');
+
+    onModify({
+      id,
+      title,
+      content,
+      picture,
+      isChecked,
+    });
+    navigation.navigate('Gallery');
     onReset();
   };
 
