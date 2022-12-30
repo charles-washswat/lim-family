@@ -11,9 +11,11 @@ import {
   Image,
   Keyboard,
   Alert,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNavigation} from '@react-navigation/native';
+import styled from 'styled-components/native';
 
 const DetailGallery = ({route}) => {
   const {id, onModify, oldImage, oldTitle, oldContent, oldIsChecked} =
@@ -76,7 +78,7 @@ const DetailGallery = ({route}) => {
   };
 
   return (
-    <View>
+    <KeyboardAvoidingView>
       <ScrollView style={styles.ViewContainer}>
         <Pressable style={styles.background} onPress={Keyboard.dismiss}>
           <View style={styles.container1}>
@@ -124,12 +126,26 @@ const DetailGallery = ({route}) => {
           </View>
         </Pressable>
       </ScrollView>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 export default DetailGallery;
 
+const Container = styled.KeyboardAvoidingView`
+  width: '100%';
+  height: '100%';
+  align-items: 'center';
+  background-color: 'white';
+`;
+
 const styles = StyleSheet.create({
+  container0: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
   ViewContainer: {
     height: 600,
     width: 400,

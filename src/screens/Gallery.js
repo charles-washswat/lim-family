@@ -86,19 +86,19 @@ const Gallery = ({navigation}) => {
   };
 
   const onModify = ({id, title, content, picture, isChecked}) => {
-    const modifiedPhotoContents = {
-      id,
-      image: picture,
-      title,
-      content,
-      isChecked,
-    };
-    console.log('modifiedPhotoContents>>>', modifiedPhotoContents);
-    const deletedPhotoList = photoList.filter(item => item.id !== id);
-    console.log('deletedPhotoList>>>', deletedPhotoList);
-    const test = [...deletedPhotoList, modifiedPhotoContents];
-    setPhotoList(test);
-    console.log('test>>>', test);
+    const modifiedPhotoContents = [
+      {
+        id,
+        image: picture,
+        title,
+        content,
+        isChecked,
+      },
+    ];
+    const modifiedPhotoList = [...photoList, ...modifiedPhotoContents];
+    console.log(modifiedPhotoList);
+    setPhotoList(modifiedPhotoList);
+    console.log('newPhotoList>>>', modifiedPhotoList);
   };
 
   const onRemove = () => {
