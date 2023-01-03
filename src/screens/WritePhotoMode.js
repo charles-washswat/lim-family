@@ -18,6 +18,7 @@ function WritePhotoMode({visible, onClose, onCreate}) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [picture, setPicture] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
 
   const onSelectImage = () => {
     launchImageLibrary(
@@ -49,7 +50,9 @@ function WritePhotoMode({visible, onClose, onCreate}) {
     if (title === '') {
       return Alert.alert('제목을 추가해주세요');
     }
-    onCreate({title, content, picture}), onClose(), onReset();
+    onCreate({title, content, picture, isChecked});
+    onClose();
+    onReset();
   };
 
   return (
@@ -107,7 +110,8 @@ function WritePhotoMode({visible, onClose, onCreate}) {
                 title="취소"
                 color="#2c2c2c"
                 onPress={() => {
-                  onClose(), onReset();
+                  onClose();
+                  onReset();
                 }}
               />
             </View>

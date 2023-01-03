@@ -12,35 +12,6 @@ import storageData from '../static/storage.json';
 import ClothItem from '../components/ClothItem';
 import {Value} from 'react-native-reanimated';
 
-const UserList = () => {
-  const users = [
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-  ];
-
-  const User = ({user}) => {
-    return <View></View>;
-  };
-
-  return (
-    <View>
-      {users.map(user => (
-        <User user={user} />
-      ))}
-      <User user={users[0]} />
-      <User user={users[1]} />
-      <User user={users[2]} />
-    </View>
-  );
-};
-
 const StorageBox = ({navigation}) => {
   const [name, setName] = useState('');
   const [nickname, setNickname] = useState('');
@@ -285,6 +256,7 @@ const StorageBox = ({navigation}) => {
                   name={name}
                   initializedAt={initializedAt}
                   isChecked={isChecked}
+                  onPress={onpressAction}
                 />
               </ClothItemWrapper>
             );

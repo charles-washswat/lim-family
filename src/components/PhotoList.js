@@ -1,16 +1,38 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 import FastImage from 'react-native-fast-image';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import {useNavigation} from '@react-navigation/native';
 
-function PhotoList({id, image, title}) {
+function PhotoList({id, onModify, image, title, content, isChecked, onPress}) {
+  const navigation = useNavigation();
   return (
     <View>
       <Container>
-        <Photo height={'100%'} width={'100%'} image={image} />
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('DetailGallery', {
+              id,
+              onModify,
+              oldImage: image,
+              oldTitle: title,
+              oldContent: content,
+              oldIsChecked: isChecked,
+            })
+          }>
+          <Photo height={'100%'} width={'100%'} image={image} />
+        </TouchableOpacity>
+        <CheckBox
+          isChecked={isChecked}
+          onPress={() => onPress({id, isChecked})}
+          fillColor="black"
+          disableText
+          iconStyle={{borderColor: 'white'}}
+        />
       </Container>
       <View style={{paddingTop: 5}}>
-        <Text style={{color: 'black', fontsize: 13}}>{title}</Text>
+        <TestText fontSize={13}>{title}</TestText>
       </View>
     </View>
   );
@@ -30,6 +52,18 @@ const Photo = ({height, width, image}) => {
     />
   );
 };
+
+const CheckBox = styled(BouncyCheckbox)`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+const TestText = styled.Text`
+  color: black;
+  font-size: ${props => `${props.fontSize}px`};
+  // font-size: ${({fontSize}) => `${fontSize}px`};
+`;
 
 const Container = styled.View`
   height: 180px;

@@ -4,7 +4,7 @@ import DetailScreen from '../screens/DetailScreen';
 import StorageBox from '../screens/StorageBox';
 import Gallery from '../screens/Gallery';
 import DetailGallery from '../screens/DetailGallery';
-import WritePhotoMode from '../screens/WritePhotoMode';
+import PhotoList from '../components/PhotoList';
 
 const Stack = createStackNavigator();
 
@@ -19,9 +19,9 @@ const StackStorageBox = () => {
 
 const StackGallery = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Gallery" component={Gallery} />
-      <Stack.Screen name="WritePhotoMode" component={WritePhotoMode} />
+      <Stack.Screen name="PhotoList" component={PhotoList} />
       <Stack.Screen name="DetailGallery" component={DetailGallery} />
     </Stack.Navigator>
   );

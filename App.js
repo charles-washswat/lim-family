@@ -24,11 +24,12 @@ const App = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="사진첩"
         screenOptions={{
           headerShown: false,
           tabBarShowLabel: false,
           tabBarActiveTintColor: '6200ee',
+          keyboardHidesTabBar: true,
         }}>
         <Tab.Screen
           name="Home"
