@@ -25,12 +25,13 @@ const Gallery = ({navigation}) => {
   const [photoList, setPhotoList] = useState([]);
   useEffect(() => {
     async function load() {
-      console.log('load>>>');
       try {
         const rawPhotoList = await AsyncStorage.getItem('photoList');
         const savedPhotoList = JSON.parse(rawPhotoList);
+        savedPhotoList.filter(element => {
+          return element !== undefined && element !== null && element !== '';
+        });
         setPhotoList(savedPhotoList);
-        console.log('savedPhotoList>>>', savedPhotoList);
       } catch (e) {
         Alert.alert('불러오기에 실패하였습니다');
       }
@@ -39,7 +40,6 @@ const Gallery = ({navigation}) => {
   }, []);
   const [modalVisible, setModalVisible] = useState(false);
   const nextId = useRef(1);
-
   // const temp = {
   //   picture: {
   //     assets: [{uri: '123'}],
@@ -80,25 +80,30 @@ const Gallery = ({navigation}) => {
         JSON.stringify(combinedPhotoList),
       );
     } catch (e) {
-      console.log('e');
       Alert.alert('저장에 실패하였습니다');
     }
   };
 
-  const onModify = ({id, title, content, picture, isChecked}) => {
-    const modifiedPhotoContents = [
-      {
-        id,
-        image: picture,
-        title,
-        content,
-        isChecked,
-      },
-    ];
-    const modifiedPhotoList = [...photoList, ...modifiedPhotoContents];
-    console.log(modifiedPhotoList);
-    setPhotoList(modifiedPhotoList);
-    console.log('newPhotoList>>>', modifiedPhotoList);
+  const onModify = async ({id, title, content, picture, isChecked}) => {
+    const modifiedPhotoContents = {
+      id,
+      image: picture,
+      title,
+      content,
+      isChecked,
+    };
+    const modifiedPhotoList = photoList.map(item =>
+      item.id === id ? {...item, ...modifiedPhotoContents} : item,
+    );
+    const newList = modifiedPhotoList.filter(element => {
+      return element !== undefined && element !== null && element !== '';
+    });
+    setPhotoList(newList);
+    try {
+      await AsyncStorage.setItem('photoList', JSON.stringify(newList));
+    } catch (e) {
+      Alert.alert('저장에 실패하였습니다');
+    }
   };
 
   const onRemove = () => {
@@ -112,8 +117,20 @@ const Gallery = ({navigation}) => {
         {text: '취소', onPress: () => {}, style: 'cancel'},
         {
           text: '삭제',
-          onPress: () => {
-            setPhotoList(photoList.filter(item => item.isChecked === false));
+          onPress: async () => {
+            const removedPhotoList = photoList.filter(
+              item => item.isChecked === false,
+            );
+            setPhotoList(removedPhotoList);
+            try {
+              await AsyncStorage.setItem(
+                'photoList',
+                JSON.stringify(removedPhotoList),
+              );
+            } catch (e) {
+              console.log('e');
+              Alert.alert('저장에 실패하였습니다');
+            }
           },
         },
       ],
@@ -124,7 +141,7 @@ const Gallery = ({navigation}) => {
     );
   };
 
-  const onpressAction = ({id, isChecked}) => {
+  const onpressAction = async ({id, isChecked}) => {
     const newPhotoList = photoList.map(item => {
       if (item.id === id) {
         return {...item, isChecked: !isChecked};
@@ -133,6 +150,12 @@ const Gallery = ({navigation}) => {
       }
     });
     setPhotoList(newPhotoList);
+    try {
+      await AsyncStorage.setItem('photoList', JSON.stringify(newPhotoList));
+    } catch (e) {
+      console.log('e');
+      Alert.alert('저장에 실패하였습니다');
+    }
   };
 
   useEffect(() => {

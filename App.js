@@ -29,6 +29,7 @@ const App = () => {
           headerShown: false,
           tabBarShowLabel: false,
           tabBarActiveTintColor: '6200ee',
+          keyboardHidesTabBar: true,
         }}>
         <Tab.Screen
           name="Home"

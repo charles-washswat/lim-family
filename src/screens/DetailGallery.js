@@ -78,7 +78,7 @@ const DetailGallery = ({route}) => {
   };
 
   return (
-    <KeyboardAvoidingView>
+    <KeyboardAvoidingView style={styles.container0}>
       <ScrollView style={styles.ViewContainer}>
         <Pressable style={styles.background} onPress={Keyboard.dismiss}>
           <View style={styles.container1}>
@@ -130,13 +130,6 @@ const DetailGallery = ({route}) => {
   );
 };
 export default DetailGallery;
-
-const Container = styled.KeyboardAvoidingView`
-  width: '100%';
-  height: '100%';
-  align-items: 'center';
-  background-color: 'white';
-`;
 
 const styles = StyleSheet.create({
   container0: {
