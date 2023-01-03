@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
-  Modal,
   View,
   ScrollView,
   Pressable,
@@ -15,25 +14,15 @@ import {
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNavigation} from '@react-navigation/native';
-import styled from 'styled-components/native';
 
 const DetailGallery = ({route}) => {
   const {id, onModify, oldImage, oldTitle, oldContent, oldIsChecked} =
     route.params;
-  // id, oldImage, oldTitle, oldContent, oldIsChecked, onClose, onModify
   const navigation = useNavigation();
   const [title, setTitle] = useState(oldTitle);
   const [content, setContent] = useState(oldContent);
-  // useEffect(() => {
-  //   setContent(oldContent);
-  // }, [oldContent]);
   const [picture, setPicture] = useState(oldImage);
-
   const [isChecked, setIsChecked] = useState(oldIsChecked);
-  // useEffect(() => {
-  //   setIsChecked(oldIsChecked);
-  // }, [oldIsChecked]);
-
   const onSelectImage = () => {
     launchImageLibrary(
       {

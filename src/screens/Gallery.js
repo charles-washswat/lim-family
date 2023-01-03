@@ -16,7 +16,6 @@ import PhotoList from '../components/PhotoList';
 import WritePhotoMode from '../screens/WritePhotoMode';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {loadOptions} from '@babel/core';
 
 const TABBAR_HEIGHT = 70;
 
@@ -64,14 +63,14 @@ const Gallery = ({navigation}) => {
   // }, []);
 
   const onCreate = async ({title, content, picture, isChecked}) => {
-    const writePhotoList = {
+    const writedPhotoContents = {
       id: nextId.current,
       image: picture?.assets[0]?.uri,
       title,
       content,
       isChecked,
     };
-    const combinedPhotoList = [...photoList, writePhotoList];
+    const combinedPhotoList = [...photoList, writedPhotoContents];
     setPhotoList(combinedPhotoList);
     nextId.current += 1;
     try {
@@ -142,25 +141,20 @@ const Gallery = ({navigation}) => {
   };
 
   const onpressAction = async ({id, isChecked}) => {
-    const newPhotoList = photoList.map(item => {
-      if (item.id === id) {
-        return {...item, isChecked: !isChecked};
-      } else {
-        return item;
-      }
-    });
-    setPhotoList(newPhotoList);
+    const setCheckedPhotoContents = photoList.map(item =>
+      item.id === id ? {...item, isChecked: !isChecked} : item,
+    );
+    setPhotoList(setCheckedPhotoContents);
     try {
-      await AsyncStorage.setItem('photoList', JSON.stringify(newPhotoList));
+      await AsyncStorage.setItem(
+        'photoList',
+        JSON.stringify(setCheckedPhotoContents),
+      );
     } catch (e) {
       console.log('e');
       Alert.alert('저장에 실패하였습니다');
     }
   };
-
-  useEffect(() => {
-    console.log('photoList: ', photoList);
-  }, [photoList]);
 
   return (
     <KeyboardAvoidingView style={styles.container}>

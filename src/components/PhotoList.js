@@ -32,7 +32,7 @@ function PhotoList({id, onModify, image, title, content, isChecked, onPress}) {
         />
       </Container>
       <View style={{paddingTop: 5}}>
-        <TestText fontSize={13}>{title}</TestText>
+        <TitleText fontSize={13}>{title}</TitleText>
       </View>
     </View>
   );
@@ -59,7 +59,7 @@ const CheckBox = styled(BouncyCheckbox)`
   right: 0;
 `;
 
-const TestText = styled.Text`
+const TitleText = styled.Text`
   color: black;
   font-size: ${props => `${props.fontSize}px`};
   // font-size: ${({fontSize}) => `${fontSize}px`};
