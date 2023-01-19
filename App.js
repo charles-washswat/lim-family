@@ -8,6 +8,9 @@ import Icon2 from 'react-native-vector-icons/Octicons';
 import HomeScreen from './src/screens/HomeScreen';
 import {StackStorageBox, StackGallery} from './src/components/CustomNavigation';
 import ProfileScreen from './src/screens/ProfileScreen';
+import {Provider} from 'react-redux';
+import {configureStore} from '@reduxjs/toolkit';
+import rootReducer from './src/slices';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,59 +23,63 @@ const Button = styled.Button`
   border-radius: 3px;
 `;
 
+const store = configureStore({reducer: rootReducer});
+
 const App = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName="사진첩"
-        screenOptions={{
-          headerShown: false,
-          tabBarShowLabel: false,
-          tabBarActiveTintColor: '6200ee',
-          keyboardHidesTabBar: true,
-        }}>
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            title: '홈',
-            tabBarIcon: ({color, size}) => (
-              <Icon2 name="home" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="StorageBox"
-          component={StackStorageBox}
-          options={{
-            title: '이용내역',
-            tabBarIcon: ({color, size}) => (
-              <Icon1 name="file-document-edit" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="사진첩"
-          component={StackGallery}
-          options={{
-            title: '사진첩',
-            tabBarIcon: ({color, size}) => (
-              <Icon1 name="view-gallery-outline" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={{
-            title: '마이세특',
-            tabBarIcon: ({color, size}) => (
-              <Icon1 name="account" color={color} size={size} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="사진첩"
+          screenOptions={{
+            headerShown: false,
+            tabBarShowLabel: false,
+            tabBarActiveTintColor: '6200ee',
+            keyboardHidesTabBar: true,
+          }}>
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              title: '홈',
+              tabBarIcon: ({color, size}) => (
+                <Icon2 name="home" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="StorageBox"
+            component={StackStorageBox}
+            options={{
+              title: '이용내역',
+              tabBarIcon: ({color, size}) => (
+                <Icon1 name="file-document-edit" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="사진첩"
+            component={StackGallery}
+            options={{
+              title: '사진첩',
+              tabBarIcon: ({color, size}) => (
+                <Icon1 name="view-gallery-outline" color={color} size={size} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+              title: '마이세특',
+              tabBarIcon: ({color, size}) => (
+                <Icon1 name="account" color={color} size={size} />
+              ),
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 

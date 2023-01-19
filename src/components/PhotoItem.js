@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
-import FastImage from 'react-native-fast-image';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {useNavigation} from '@react-navigation/native';
+import {Photo, Gallery} from '../components/common';
 
-function PhotoList({id, onModify, image, title, content, isChecked, onPress}) {
+function PhotoItem({id, onModify, image, title, content, isChecked, onPress}) {
   const navigation = useNavigation();
   return (
     <View>
@@ -38,21 +38,6 @@ function PhotoList({id, onModify, image, title, content, isChecked, onPress}) {
   );
 }
 
-const Photo = ({height, width, image}) => {
-  return (
-    <FastImage
-      style={{height, width}}
-      justifyContent="center"
-      source={{
-        uri: image,
-        headers: {Authorization: 'someAuthToken'},
-        priority: FastImage.priority.normal,
-      }}
-      resizeMode={FastImage.resizeMode.cover}
-    />
-  );
-};
-
 const CheckBox = styled(BouncyCheckbox)`
   position: absolute;
   top: 0;
@@ -73,4 +58,4 @@ const Container = styled.View`
   border-color: black;
 `;
 
-export default PhotoList;
+export default PhotoItem;

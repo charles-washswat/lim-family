@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   ScrollView,
@@ -7,181 +7,57 @@ import {
   KeyboardAvoidingView,
   Text,
   TouchableOpacity,
-  Alert,
 } from 'react-native';
 import {useSafeAreaFrame} from 'react-native-safe-area-context';
 import CameraButton from '../components/CameraButton';
 import styled from 'styled-components/native';
-import PhotoList from '../components/PhotoList';
+import PhotoItem from '../components/PhotoItem';
 import WritePhotoMode from '../screens/WritePhotoMode';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getStorageItem, setStorageItem} from '../utils';
+import {photoListKey} from '../utils/keys';
+import usePhotoList from '../hooks/usePhotoList';
+import usePhotoListActions from '../hooks/usePhotoListActions';
 
 const TABBAR_HEIGHT = 70;
 
 const Gallery = ({navigation}) => {
+  const photoList = usePhotoList();
+  const {remove} = usePhotoListActions();
   const insets = useSafeAreaFrame();
-  const [photoList, setPhotoList] = useState([]);
-  useEffect(() => {
-    async function load() {
-      try {
-        const rawPhotoList = await AsyncStorage.getItem('photoList');
-        const savedPhotoList = JSON.parse(rawPhotoList);
-        savedPhotoList.filter(element => {
-          return element !== undefined && element !== null && element !== '';
-        });
-        setPhotoList(savedPhotoList);
-      } catch (e) {
-        Alert.alert('불러오기에 실패하였습니다');
-      }
-    }
-    load();
-  }, []);
   const [modalVisible, setModalVisible] = useState(false);
-  const nextId = useRef(1);
-  // const temp = {
-  //   picture: {
-  //     assets: [{uri: '123'}],
-  //   },
-  // };
-
-  // const temp2 = {
-  //   picture: {
-  //     assets: [],
-  //   },
-  // };
-
-  // const temp3 = {
-  //   picture: {},
-  // };
-
-  // useEffect(() => {
-  //   // test
-  //   // console.log('temp: ', temp.picture.assets[0].uri);
-  //   // console.log('temp2: ', temp2?.picture?.assets[0]?.uri || 'hi');
-  //   // console.log('temp3: ', temp3.picture.assets[0].uri);
-  // }, []);
-
-  const onCreate = async ({title, content, picture, isChecked}) => {
-    const writedPhotoContents = {
-      id: nextId.current,
-      image: picture?.assets[0]?.uri,
-      title,
-      content,
-      isChecked,
-    };
-    const combinedPhotoList = [...photoList, writedPhotoContents];
-    setPhotoList(combinedPhotoList);
-    nextId.current += 1;
-    try {
-      await AsyncStorage.setItem(
-        'photoList',
-        JSON.stringify(combinedPhotoList),
-      );
-    } catch (e) {
-      Alert.alert('저장에 실패하였습니다');
-    }
-  };
-
-  const onModify = async ({id, title, content, picture, isChecked}) => {
-    const modifiedPhotoContents = {
-      id,
-      image: picture,
-      title,
-      content,
-      isChecked,
-    };
-    const modifiedPhotoList = photoList.map(item =>
-      item.id === id ? {...item, ...modifiedPhotoContents} : item,
-    );
-    const newList = modifiedPhotoList.filter(element => {
-      return element !== undefined && element !== null && element !== '';
-    });
-    setPhotoList(newList);
-    try {
-      await AsyncStorage.setItem('photoList', JSON.stringify(newList));
-    } catch (e) {
-      Alert.alert('저장에 실패하였습니다');
-    }
-  };
-
-  const onRemove = () => {
-    if (photoList.every(item => item.isChecked === false)) {
-      return Alert.alert('삭제할 항목을 선택해주세요');
-    }
-    return Alert.alert(
-      '삭제',
-      '정말로 삭제하시겠습니까?',
-      [
-        {text: '취소', onPress: () => {}, style: 'cancel'},
-        {
-          text: '삭제',
-          onPress: async () => {
-            const removedPhotoList = photoList.filter(
-              item => item.isChecked === false,
-            );
-            setPhotoList(removedPhotoList);
-            try {
-              await AsyncStorage.setItem(
-                'photoList',
-                JSON.stringify(removedPhotoList),
-              );
-            } catch (e) {
-              console.log('e');
-              Alert.alert('저장에 실패하였습니다');
-            }
-          },
-        },
-      ],
-      {
-        cancelable: true,
-        onDismiss: () => {},
-      },
-    );
-  };
-
-  const onpressAction = async ({id, isChecked}) => {
-    const setCheckedPhotoContents = photoList.map(item =>
-      item.id === id ? {...item, isChecked: !isChecked} : item,
-    );
-    setPhotoList(setCheckedPhotoContents);
-    try {
-      await AsyncStorage.setItem(
-        'photoList',
-        JSON.stringify(setCheckedPhotoContents),
-      );
-    } catch (e) {
-      console.log('e');
-      Alert.alert('저장에 실패하였습니다');
-    }
-  };
+  useEffect(() => {
+    console.log('photoList', photoList);
+  }, [photoList]);
 
   return (
     <KeyboardAvoidingView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Gallery</Text>
-        <TouchableOpacity onPress={onRemove}>
+        <TouchableOpacity
+          onPress={() => {
+            remove(id);
+          }}>
           <Icon name="trash-can-outline" size={35} color="black" />
         </TouchableOpacity>
       </View>
       <ScrollView horizontal={false} style={styles.scrollView}>
         <View style={styles.stylegridView}>
-          {photoList.map(item => {
-            const {id, image, title, content, isChecked} = item;
-            return (
-              <PhotoListWrapper key={id}>
-                <PhotoList
-                  id={id}
-                  image={image}
-                  title={title}
-                  content={content}
-                  isChecked={isChecked}
-                  onPress={onpressAction}
-                  onModify={onModify}
-                />
-              </PhotoListWrapper>
-            );
-          })}
+          {photoList?.length > 0 &&
+            photoList.map(item => {
+              const {id, image, title, content, isChecked} = item;
+              return (
+                <PhotoListWrapper key={id}>
+                  <PhotoItem
+                    id={id}
+                    image={image}
+                    title={title}
+                    content={content}
+                    isChecked={isChecked}
+                  />
+                </PhotoListWrapper>
+              );
+            })}
         </View>
       </ScrollView>
       <PlusButtonContainer
@@ -194,7 +70,6 @@ const Gallery = ({navigation}) => {
       <WritePhotoMode
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
-        onCreate={onCreate}
       />
     </KeyboardAvoidingView>
   );

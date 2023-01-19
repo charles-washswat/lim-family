@@ -14,15 +14,16 @@ import {
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNavigation} from '@react-navigation/native';
+import usePhotoListActions from '../hooks/usePhotoListActions';
 
 const DetailGallery = ({route}) => {
-  const {id, onModify, oldImage, oldTitle, oldContent, oldIsChecked} =
-    route.params;
+  const {id, oldImage, oldTitle, oldContent, oldIsChecked} = route.params;
   const navigation = useNavigation();
   const [title, setTitle] = useState(oldTitle);
   const [content, setContent] = useState(oldContent);
   const [picture, setPicture] = useState(oldImage);
   const [isChecked, setIsChecked] = useState(oldIsChecked);
+  const {toggle} = usePhotoListActions();
   const onSelectImage = () => {
     launchImageLibrary(
       {
@@ -48,21 +49,7 @@ const DetailGallery = ({route}) => {
   };
 
   const setValidator = () => {
-    if (picture === null) {
-      return Alert.alert('사진을 추가해주세요');
-    }
-    if (title === '') {
-      return Alert.alert('제목을 추가해주세요');
-    }
-
-    onModify({
-      id,
-      title,
-      content,
-      picture,
-      isChecked,
-    });
-    navigation.navigate('Gallery');
+    toggle(id);
     onReset();
   };
 

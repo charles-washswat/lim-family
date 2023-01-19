@@ -13,12 +13,15 @@ import {
   Alert,
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
+import {Photo} from '../components/common';
+import usePhotoListActions from '../hooks/usePhotoListActions';
 
 function WritePhotoMode({visible, onClose, onCreate}) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [picture, setPicture] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
+  const {add} = usePhotoListActions();
 
   const onSelectImage = () => {
     launchImageLibrary(
@@ -50,7 +53,7 @@ function WritePhotoMode({visible, onClose, onCreate}) {
     if (title === '') {
       return Alert.alert('제목을 추가해주세요');
     }
-    onCreate({title, content, picture, isChecked});
+    add(picture, title, content);
     onClose();
     onReset();
   };
@@ -70,14 +73,14 @@ function WritePhotoMode({visible, onClose, onCreate}) {
                 onPress={onSelectImage}
                 color="#2c2c2c"
               />
-              <Image
-                style={styles.upLoadImage}
-                source={
+              <Photo
+                height={'80%'}
+                width={'50%'}
+                image={
                   picture
-                    ? {uri: picture?.assets[0]?.uri}
+                    ? picture?.assets[0]?.uri
                     : require('../../assets/user.png')
                 }
-                resizeMode="cover"
               />
             </View>
             <View style={styles.container2}>
