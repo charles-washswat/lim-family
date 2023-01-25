@@ -10,7 +10,7 @@ import {StackStorageBox, StackGallery} from './src/components/CustomNavigation';
 import ProfileScreen from './src/screens/ProfileScreen';
 import {Provider} from 'react-redux';
 import {configureStore} from '@reduxjs/toolkit';
-import rootReducer from './src/slices';
+import {store} from './src/slices';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,8 +22,6 @@ const Button = styled.Button`
   border: 2px solid palevioletred;
   border-radius: 3px;
 `;
-
-const store = configureStore({reducer: rootReducer});
 
 const App = () => {
   return (

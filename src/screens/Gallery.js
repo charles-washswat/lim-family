@@ -26,8 +26,9 @@ const Gallery = ({navigation}) => {
   const {remove} = usePhotoListActions();
   const insets = useSafeAreaFrame();
   const [modalVisible, setModalVisible] = useState(false);
+
   useEffect(() => {
-    console.log('photoList', photoList);
+    console.log('photoList>>>', photoList);
   }, [photoList]);
 
   return (
@@ -36,7 +37,7 @@ const Gallery = ({navigation}) => {
         <Text style={styles.headerText}>Gallery</Text>
         <TouchableOpacity
           onPress={() => {
-            remove(id);
+            remove();
           }}>
           <Icon name="trash-can-outline" size={35} color="black" />
         </TouchableOpacity>
@@ -45,12 +46,12 @@ const Gallery = ({navigation}) => {
         <View style={styles.stylegridView}>
           {photoList?.length > 0 &&
             photoList.map(item => {
-              const {id, image, title, content, isChecked} = item;
+              const {id, picture, title, content, isChecked} = item;
               return (
                 <PhotoListWrapper key={id}>
                   <PhotoItem
                     id={id}
-                    image={image}
+                    image={picture}
                     title={title}
                     content={content}
                     isChecked={isChecked}

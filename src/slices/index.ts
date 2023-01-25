@@ -1,14 +1,13 @@
-import {combineReducers} from 'redux';
+import {configureStore} from '@reduxjs/toolkit';
 import PhotoList from './photoList';
 
-const rootReducer = combineReducers({
-  PhotoList,
+export const store = configureStore({
+  reducer: {
+    photoList: PhotoList,
+  },
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof store.getState>;
 
-declare module 'react-redux' {
-  interface DefaultRootstate extends RootState {}
-}
-
-export default rootReducer;
+export type AppDispatch = typeof store.dispatch;

@@ -4,9 +4,11 @@ import styled from 'styled-components/native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {useNavigation} from '@react-navigation/native';
 import {Photo, Gallery} from '../components/common';
+import usePhotoListActions from '../hooks/usePhotoListActions';
 
 function PhotoItem({id, onModify, image, title, content, isChecked, onPress}) {
   const navigation = useNavigation();
+  const {toggle} = usePhotoListActions();
   return (
     <View>
       <Container>
@@ -25,7 +27,7 @@ function PhotoItem({id, onModify, image, title, content, isChecked, onPress}) {
         </TouchableOpacity>
         <CheckBox
           isChecked={isChecked}
-          onPress={() => onPress({id, isChecked})}
+          onPress={() => toggle(id)}
           fillColor="black"
           disableText
           iconStyle={{borderColor: 'white'}}

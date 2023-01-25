@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Modal,
@@ -22,6 +22,10 @@ function WritePhotoMode({visible, onClose, onCreate}) {
   const [picture, setPicture] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
   const {add} = usePhotoListActions();
+
+  useEffect(() => {
+    console.log('picture>>>', picture);
+  }, [picture]);
 
   const onSelectImage = () => {
     launchImageLibrary(
@@ -53,7 +57,7 @@ function WritePhotoMode({visible, onClose, onCreate}) {
     if (title === '') {
       return Alert.alert('제목을 추가해주세요');
     }
-    add(picture, title, content);
+    add({picture: picture?.assets[0]?.uri, title, content});
     onClose();
     onReset();
   };

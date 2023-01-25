@@ -23,7 +23,7 @@ const DetailGallery = ({route}) => {
   const [content, setContent] = useState(oldContent);
   const [picture, setPicture] = useState(oldImage);
   const [isChecked, setIsChecked] = useState(oldIsChecked);
-  const {toggle} = usePhotoListActions();
+  const {add} = usePhotoListActions();
   const onSelectImage = () => {
     launchImageLibrary(
       {
@@ -49,7 +49,7 @@ const DetailGallery = ({route}) => {
   };
 
   const setValidator = () => {
-    toggle(id);
+    add({picture: picture?.assets[0]?.uri, title, content});
     onReset();
   };
 
